@@ -125,6 +125,10 @@ if ($obCache->initCache($arParams["CACHE_TIME"], $cacheId, $cachePath)) {
         $ipropValues = new Iblock\InheritedProperty\ElementValues($arItem["IBLOCK_ID"], $arItem["ID"]);
         $arItem["IPROPERTY_VALUES"] = $ipropValues->getValues();
 
+        if (!empty($arItem["IPROPERTY_VALUES"]["ELEMENT_META_DESCRIPTION"])) {
+            $arItem["PREVIEW_TEXT"] = $arItem["IPROPERTY_VALUES"]["ELEMENT_META_DESCRIPTION"];
+        }
+
         Iblock\Component\Tools::getFieldImageData(
             $arItem,
             ['PREVIEW_PICTURE', 'DETAIL_PICTURE'],
