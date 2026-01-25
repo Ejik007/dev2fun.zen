@@ -131,6 +131,7 @@ class Dev2funYandexZenComponent extends CBitrixComponent
     public function clearExcess($str)
     {
         $str = preg_replace('#(\<script.*\>.*?\</script\>)#s', '', $str);
+        $str = preg_replace('#(\<style.*\>.*?\</style\>)#s', '', $str);
         return $str;
     }
 }
