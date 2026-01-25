@@ -163,10 +163,10 @@ if ($obCache->initCache($arParams["CACHE_TIME"], $cacheId, $cachePath)) {
         }
 
         $arItem["DETAIL_PAGE_URL"] = $this->getAbsoluteUrl($arItem["DETAIL_PAGE_URL"]);
-        //		if($arItem["DETAIL_PAGE_URL"]) {
-        //			$utm = Dev2funYandexZen::getUTM($arItem["NAME"]);
-        //			if($utm) $arItem["DETAIL_PAGE_URL"] .= '?'.$utm;
-        //		}
+        if($arItem["DETAIL_PAGE_URL"]) {
+            $utm = Dev2funYandexZen::getUTM($arItem["NAME"]);
+            if($utm) $arItem["DETAIL_PAGE_URL"] .= '?'.$utm;
+        }
 
         if (!empty($arItem["DATE_CREATE"])) {
             $arItem["DATE_CREATE"] = (new \DateTime($arItem["DATE_CREATE"]))->format('D, d M Y H:i:s O');

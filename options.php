@@ -47,15 +47,15 @@ if($request->isPost() && check_bitrix_sessid()) {
 		if($allow = $request->getPost('tags_allow')) {
 			Option::set($curModuleName,'tags_allow',$allow);
 		}
-//		if($utmSource = $request->getPost('utm_source')) {
-//			Option::set($curModuleName,'utm_source',$utmSource);
-//		}
-//		if($utmMedium = $request->getPost('utm_medium')) {
-//			Option::set($curModuleName,'utm_medium',$utmMedium);
-//		}
-//		$utmTerm = $request->getPost('utm_term');
-//		if(!$utmTerm) $utmTerm = 'N';
-//        Option::set($curModuleName,'utm_term',$utmTerm);
+		if($utmSource = $request->getPost('utm_source')) {
+			Option::set($curModuleName,'utm_source',$utmSource);
+		}
+		if($utmMedium = $request->getPost('utm_medium')) {
+			Option::set($curModuleName,'utm_medium',$utmMedium);
+		}
+		$utmTerm = $request->getPost('utm_term');
+		if(!$utmTerm) $utmTerm = 'N';
+        Option::set($curModuleName,'utm_term',$utmTerm);
 
 		Dev2funYandexZen::clearCache();
 		LocalRedirect($APPLICATION->GetCurPageParam('save_success=Y',['cache_success']));
@@ -265,7 +265,7 @@ $tabControl->Begin();
                     </td>
                 </tr>
 
-              <?/*?>
+
                 <tr>
                     <td class="adm-detail-content-cell-l">
                         <label for="utm_source">
@@ -327,7 +327,6 @@ $tabControl->Begin();
                         </table>
                     </td>
                 </tr>
-              <?*/?>
 
 
             </table>
