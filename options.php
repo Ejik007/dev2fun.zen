@@ -265,7 +265,7 @@ $tabControl->Begin();
                     </td>
                 </tr>
 
-
+<!-- 
                 <tr>
                     <td class="adm-detail-content-cell-l">
                         <label for="utm_source">
@@ -326,7 +326,7 @@ $tabControl->Begin();
                             </tr>
                         </table>
                     </td>
-                </tr>
+                </tr> -->
 
 
             </table>
