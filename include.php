@@ -1,8 +1,8 @@
 <?php
 /**
  * @author dev2fun <darkfriend>
- * @copyright (c) 2018, darkfriend <hi@darkfriend.ru>
- * @version 1.0.6
+ * @copyright (c) 2026, darkfriend <hi@darkfriend.ru>
+ * @version 1.1.0
  */
 IncludeModuleLangFile(__FILE__);
 

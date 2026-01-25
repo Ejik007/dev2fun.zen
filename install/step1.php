@@ -1,8 +1,8 @@
 <?php
 /**
  * @author dev2fun <darkfriend>
- * @copyright 2018, darkfriend <hi@darkfriend.ru>
- * @version 1.0.0
+ * @copyright 2026, darkfriend <hi@darkfriend.ru>
+ * @version 1.1.0
  */
 if(!check_bitrix_sessid()) return;
 IncludeModuleLangFile(__FILE__);

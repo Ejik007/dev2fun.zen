@@ -2,7 +2,7 @@
 /**
  * @author darkfriend <hi@darkfriend.ru>
  * @copyright dev2fun
- * @version 1.0.6
+ * @version 1.1.0
  */
 
 class Dev2funYandexZenComponent extends CBitrixComponent
