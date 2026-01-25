@@ -15,6 +15,7 @@ $MESS["D2F_MODULE_ZEN_OPTIONS_AGE_RATING_adult"] = "Показывать тол�
 $MESS["D2F_MODULE_ZEN_OPTIONS_AGE_RATING_nonadult"] = "Показывать взрослым и детям от 13 лет";
 $MESS["D2F_MODULE_ZEN_OPTIONS_CATEGORIES"] = "Тематики блога";
 $MESS["D2F_MODULE_ZEN_OPTIONS_TAGS_ALLOW"] = "Разрешенные теги";
+$MESS["D2F_MODULE_ZEN_OPTIONS_ZEN_CATEGORIES"] = "Управляющие теги (через запятую)";
 $MESS["D2F_MODULE_ZEN_OPTIONS_UTM_SOURCE"] = "Добавляемый utm_source";
 $MESS["D2F_MODULE_ZEN_OPTIONS_UTM_MEDIUM"] = "Добавляемый utm_medium";
 $MESS["D2F_MODULE_ZEN_OPTIONS_UTM_TERM"] = "Добавлять utm_term";

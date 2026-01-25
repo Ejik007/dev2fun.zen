@@ -53,6 +53,9 @@ if($request->isPost() && check_bitrix_sessid()) {
 		if($utmMedium = $request->getPost('utm_medium')) {
 			Option::set($curModuleName,'utm_medium',$utmMedium);
 		}
+		if($zenCategories = $request->getPost('zen_categories')) {
+			Option::set($curModuleName,'zen_categories',$zenCategories);
+		}
 		$utmTerm = $request->getPost('utm_term');
 		if(!$utmTerm) $utmTerm = 'N';
         Option::set($curModuleName,'utm_term',$utmTerm);
@@ -258,6 +261,26 @@ $tabControl->Begin();
                                     <input type="text"
                                            name="tags_allow"
                                            value="<?=Option::get($curModuleName, "tags_allow", '<a><img><iframe><blockquotes><figure><p><h1><h2><h3><h4><h5><h6><br>');?>"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="adm-detail-content-cell-l">
+                        <label for="zen_categories">
+							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_ZEN_CATEGORIES") ?>:
+                        </label>
+                    </td>
+                    <td width="60%" class="adm-detail-content-cell-r">
+                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td>
+                                    <input type="text"
+                                           name="zen_categories"
+                                           value="<?=Option::get($curModuleName, "zen_categories", 'index, comment-all, format-article');?>"
                                     />
                                 </td>
                             </tr>

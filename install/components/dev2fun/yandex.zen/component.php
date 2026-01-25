@@ -50,6 +50,7 @@ if ($obCache->initCache($arParams["CACHE_TIME"], $cacheId, $cachePath)) {
     $arParams["TRUNCATE_LEN"] = Dev2funYandexZen::getOption('preview_text_length');
     $arParams["ALLOW_TAGS"] = Dev2funYandexZen::getOption('tags_allow');
     $arResult['CATEGORY'] = Dev2funYandexZen::getOption('blog_categories', true);
+    $arResult['ZEN_CATEGORIES'] = Dev2funYandexZen::getOption('zen_categories');
     $arResult['RATING'] = Dev2funYandexZen::getOption('age_rating');
 
     $arFilter = [

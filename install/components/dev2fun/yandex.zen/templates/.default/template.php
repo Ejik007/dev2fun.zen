@@ -61,6 +61,15 @@ if(\BX_UTF===true) {
                             <?= $APPLICATION->ConvertCharset($arItem["PREVIEW_TEXT"], $sourceCharset, 'utf8'); ?>
                             ]]>
                         </description>
+                        <?php if (!empty($arResult["ZEN_CATEGORIES"])) {
+                            $zenCategories = explode(',', $arResult["ZEN_CATEGORIES"]);
+                            foreach ($zenCategories as $zenCategory) {
+                                $zenCategory = trim($zenCategory);
+                                if (empty($zenCategory)) continue;
+                                ?>
+                                <category><?= $APPLICATION->ConvertCharset($zenCategory, $sourceCharset, 'utf8'); ?></category>
+                            <?php }
+                        } ?>
                     <?php } ?>
                     <?php if (!empty($arItem["DETAIL_TEXT"])) { ?>
                         <content:encoded><![CDATA[
