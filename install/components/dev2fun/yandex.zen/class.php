@@ -34,6 +34,9 @@ class Dev2funYandexZenComponent extends CBitrixComponent
 
     public function getAbsoluteUrl($url = null)
     {
+        if ($url && strpos($url, '//') === 0) {
+            return $this->getProtocol() . substr($url, 2);
+        }
         if ($url) {
             $arUrl = parse_url($url);
         } else {
@@ -99,12 +102,22 @@ class Dev2funYandexZenComponent extends CBitrixComponent
     public function getMedia($content)
     {
         $arMedia = [];
-        preg_match_all("#(<img[\s\S]*>)#U", $content, $matches);
+        preg_match_all("#(<img[\s\S]*?>)#i", $content, $matches);
         if (empty($matches[0])) return $arMedia;
         foreach ($matches[0] as $key => $value) {
-            if (preg_match('#src=[\'"](.*?)[\'"]#', $value, $match)) {
-                $arMedia[$key]["url"] = $this->getAbsoluteUrl($match[1]);
-                $arMedia[$key]["type"] = image_type_to_mime_type(exif_imagetype($arMedia[$key]["url"]));
+            if (preg_match('#src=[\'"](.*?)[\'"]#i', $value, $match)) {
+                $url = $this->getAbsoluteUrl($match[1]);
+                $type = null;
+                if (function_exists('exif_imagetype')) {
+                    $imageType = @exif_imagetype($url);
+                    if ($imageType) {
+                        $type = image_type_to_mime_type($imageType);
+                    }
+                }
+                $arMedia[$key] = [
+                    "url" => $url,
+                    "type" => $type,
+                ];
             }
         }
         return $arMedia;
@@ -112,9 +125,7 @@ class Dev2funYandexZenComponent extends CBitrixComponent
 
     public function getEntity($str)
     {
-        return strtr($str, [
-            '&' => '&amp;',
-        ]);
+        return htmlspecialchars($str, ENT_XML1, 'UTF-8');
     }
 
     public function clearExcess($str)
