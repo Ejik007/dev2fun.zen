@@ -242,7 +242,14 @@ $tabControl->Begin();
                                 <td>
 									<?
 									$selectCategories = Option::get($curModuleName, "blog_categories");
-									if($selectCategories) $selectCategories = unserialize($selectCategories);
+									if($selectCategories) {
+										$selectCategories = unserialize($selectCategories);
+										if(!is_array($selectCategories)) {
+											$selectCategories = array();
+										}
+									} else {
+										$selectCategories = array();
+									}
 									?>
                                     <select name="blog_categories[]" multiple="multiple" style="width:30%">
 										<? foreach(Dev2funYandexZen::getCategories() as $val) {?>
