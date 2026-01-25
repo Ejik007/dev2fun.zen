@@ -47,7 +47,9 @@ class Dev2funYandexZenComponent extends CBitrixComponent
         if (!empty($arUrl['host'])) {
             $result .= $arUrl['host'];
         } else {
-            $result .= $_SERVER['HTTP_HOST'];
+            $host = $_SERVER['HTTP_HOST'];
+            $host = preg_replace('/:.*$/', '', $host);
+            $result .= $host;
         }
         $result .= '/' . ltrim($arUrl['path'], '/');
 
