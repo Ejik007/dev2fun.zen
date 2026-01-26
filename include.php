@@ -53,9 +53,36 @@ class Dev2funYandexZen
 
     public static function clearCache()
     {
-        $cachePath = 'dev2fun.zen';
         $obCache = \Bitrix\Main\Data\Cache::createInstance();
-        return $obCache->cleanDir($cachePath);
+        $obCache->cleanDir('dev2fun.zen');
+        $obCache->cleanDir('/dev2fun.zen/');
+        
+        if(isset($GLOBALS['CACHE_MANAGER'])) {
+            $GLOBALS['CACHE_MANAGER']->CleanDir('dev2fun.zen');
+            $GLOBALS['CACHE_MANAGER']->CleanDir('/dev2fun.zen/');
+        }
+
+        if (class_exists('\CBitrixComponent')) {
+            \BXClearCache(true, "/dev2fun.zen/");
+            \BXClearCache(true, "dev2fun.zen");
+        }
+
+        $rsSites = \CSite::GetList($by="sort", $order="desc", array("ACTIVE" => "Y"));
+        while ($arSite = $rsSites->Fetch()) {
+            $obCache->cleanDir('dev2fun.zen/'.$arSite["LID"]);
+            $obCache->cleanDir('/dev2fun.zen/'.$arSite["LID"].'/');
+            if(isset($GLOBALS['CACHE_MANAGER'])) {
+                $GLOBALS['CACHE_MANAGER']->CleanDir('dev2fun.zen/'.$arSite["LID"]);
+            }
+            if (class_exists('\CBitrixComponent')) {
+                \BXClearCache(true, "/dev2fun.zen/".$arSite["LID"]."/");
+            }
+        }
+
+        if (class_exists('\Bitrix\Main\Data\StaticHtmlCache')) {
+            $staticHtmlCache = \Bitrix\Main\Data\StaticHtmlCache::getInstance();
+            $staticHtmlCache->deleteAll();
+        }
         return true;
     }
 
