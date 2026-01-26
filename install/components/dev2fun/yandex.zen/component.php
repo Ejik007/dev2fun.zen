@@ -184,4 +184,7 @@ if ($obCache->initCache($arParams["CACHE_TIME"], $cacheId, $cachePath)) {
     $obCache->endDataCache($arResult);
 }
 $this->includeComponentTemplate();
+if (class_exists('\Bitrix\Main\Data\StaticHtmlCache')) {
+    \Bitrix\Main\Data\StaticHtmlCache::getInstance()->markNonCacheable();
+}
 return;

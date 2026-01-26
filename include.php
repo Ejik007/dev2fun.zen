@@ -70,8 +70,14 @@ class Dev2funYandexZen
     public static function clearCache()
     {
         $cachePath = 'dev2fun.zen';
-        $obCache = Bitrix\Main\Data\Cache::createInstance();
-        return $obCache->cleanDir($cachePath);
+        $obCache = \Bitrix\Main\Data\Cache::createInstance();
+        $obCache->cleanDir($cachePath);
+        $obCache->cleanDir('/dev2fun.zen/');
+        if (class_exists('\Bitrix\Main\Data\StaticHtmlCache')) {
+            $staticHtmlCache = \Bitrix\Main\Data\StaticHtmlCache::getInstance();
+            $staticHtmlCache->deleteAll();
+        }
+        return true;
     }
 
     public static function ShowThanksNotice()

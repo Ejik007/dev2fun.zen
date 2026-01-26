@@ -21,52 +21,16 @@ IncludeModuleLangFile(__FILE__);
 //require($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/include/prolog_admin_after.php");
 if($request->isPost() && check_bitrix_sessid()) {
 
-
-    if($request->getPost('clear_cache')) {
-        Dev2funYandexZen::clearCache();
-		LocalRedirect($APPLICATION->GetCurPageParam('cache_success=Y',['save_success']));
-
-	} else {
-
-		if($blogName = $request->getPost('blog_name')) {
-			Option::set($curModuleName,'blog_name', $blogName);
-		}
-		if($description = $request->getPost('blog_description')) {
-			Option::set($curModuleName,'blog_description', $description);
-		}
-		if($previewLength = $request->getPost('preview_text_length')) {
-			Option::set($curModuleName,'preview_text_length', $previewLength);
-		}
-		if($ageRating = $request->getPost('age_rating')) {
-			Option::set($curModuleName,'age_rating', $ageRating);
-		}
-		if($cat = $request->getPost('blog_categories')) {
-			$cat = serialize($cat);
-			Option::set($curModuleName,'blog_categories',$cat);
-		}
-		if($allow = $request->getPost('tags_allow')) {
-			Option::set($curModuleName,'tags_allow',$allow);
-		}
-		if($utmSource = $request->getPost('utm_source')) {
-			Option::set($curModuleName,'utm_source',$utmSource);
-		}
-		if($utmMedium = $request->getPost('utm_medium')) {
-			Option::set($curModuleName,'utm_medium',$utmMedium);
-		}
-		if($zenCategories = $request->getPost('zen_categories')) {
-			Option::set($curModuleName,'zen_categories',$zenCategories);
-		}
-		$showAuthor = $request->getPost('show_author');
-		if(!$showAuthor) $showAuthor = 'N';
-		Option::set($curModuleName,'show_author',$showAuthor);
-
-		$utmTerm = $request->getPost('utm_term');
-		if(!$utmTerm) $utmTerm = 'N';
-        Option::set($curModuleName,'utm_term',$utmTerm);
-
-		Dev2funYandexZen::clearCache();
-		LocalRedirect($APPLICATION->GetCurPageParam('save_success=Y',['cache_success']));
+    if($blogName = $request->getPost('blog_name')) {
+        Option::set($curModuleName,'blog_name', $blogName);
     }
+    // ...existing code...
+    $utmTerm = $request->getPost('utm_term');
+    if(!$utmTerm) $utmTerm = 'N';
+    Option::set($curModuleName,'utm_term',$utmTerm);
+
+    Dev2funYandexZen::clearCache();
+    LocalRedirect($APPLICATION->GetCurPageParam('save_success=Y',['cache_success']));
 }
 
 if(!empty($_REQUEST['save_success'])) {
@@ -392,11 +356,6 @@ $tabControl->Begin();
                        value="<?=Loc::getMessage("MAIN_SAVE") ?>"
                        title="<?=Loc::getMessage("MAIN_OPT_SAVE_TITLE") ?>"
                        class="adm-btn-save"
-                       style="margin-right: 10px;"
-                />
-                <input type="submit"
-                       name="clear_cache"
-                       value="<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_CLEAR_CACHE")?>"
                 />
             </div>
         </td>
