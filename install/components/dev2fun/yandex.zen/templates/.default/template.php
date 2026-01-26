@@ -49,11 +49,6 @@ if(\BX_UTF===true) {
                             <category><?= $APPLICATION->ConvertCharset($zenCategory, $sourceCharset, 'utf8'); ?></category>
                         <?php }
                     } ?>
-                    <?php if (!empty($arResult["CATEGORY"])) { ?>
-                        <?php foreach ($arResult["CATEGORY"] as $category): ?>
-                            <category><?= $APPLICATION->ConvertCharset($category, $sourceCharset, 'utf8'); ?></category>
-                        <?php endforeach; ?>
-                    <?php } ?>
                     <?php if ($arResult['SHOW_AUTHOR'] == 'Y' && !empty($arResult['SITE']["SITE_NAME"])) { ?>
                         <author><?= $APPLICATION->ConvertCharset($arResult['SITE']["SITE_NAME"], $sourceCharset, 'utf8'); ?></author>
                     <?php } ?>

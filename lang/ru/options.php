@@ -13,7 +13,6 @@ $MESS["D2F_MODULE_ZEN_OPTIONS_PREVIEW_TEXT_LENGTH"] = "Кол-во символ�
 $MESS["D2F_MODULE_ZEN_OPTIONS_AGE_RATING"] = "Возрастной рейтинг";
 $MESS["D2F_MODULE_ZEN_OPTIONS_AGE_RATING_adult"] = "Показывать только взрослым";
 $MESS["D2F_MODULE_ZEN_OPTIONS_AGE_RATING_nonadult"] = "Показывать взрослым и детям от 13 лет";
-$MESS["D2F_MODULE_ZEN_OPTIONS_CATEGORIES"] = "Тематики блога";
 $MESS["D2F_MODULE_ZEN_OPTIONS_TAGS_ALLOW"] = "Разрешенные теги";
 $MESS["D2F_MODULE_ZEN_OPTIONS_ZEN_CATEGORIES"] = "Управляющие теги (через запятую)";
 $MESS["D2F_MODULE_ZEN_OPTIONS_SHOW_AUTHOR"] = "Выводить тег &lt;author&gt;";

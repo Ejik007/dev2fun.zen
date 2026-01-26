@@ -35,15 +35,6 @@ class Dev2funYandexZen
         return self::$instance;
     }
 
-    public static function getCategories()
-    {
-        $arCategories = [];
-        for ($i = 1; $i <= 26; $i++) {
-            $arCategories[Loc::getMessage('DEV2FUN_YZEN_CATEGORY_' . $i)] = Loc::getMessage('DEV2FUN_YZEN_CATEGORY_' . $i);
-        }
-        return $arCategories;
-    }
-
     public static function getOption($name, $serialize = false)
     {
         $option = \Bitrix\Main\Config\Option::get(self::$module_id, $name);

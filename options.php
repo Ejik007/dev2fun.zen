@@ -26,10 +26,6 @@ if($request->isPost() && check_bitrix_sessid()) {
     Option::set($curModuleName,'preview_text_length', (string)$request->getPost('preview_text_length'));
     Option::set($curModuleName,'age_rating', (string)$request->getPost('age_rating'));
     
-    $cat = $request->getPost('blog_categories');
-    if(!is_array($cat)) $cat = [];
-    Option::set($curModuleName,'blog_categories', serialize($cat));
-    
     Option::set($curModuleName,'tags_allow', (string)$request->getPost('tags_allow'));
     Option::set($curModuleName,'zen_categories', (string)$request->getPost('zen_categories'));
     
@@ -194,40 +190,6 @@ $tabControl->Begin();
 										<? foreach(['adult','nonadult'] as $val) {?>
                                             <option value="<?=$val?>" <?=($val==$selectAgeRating)?'selected':''?>>
 												<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_AGE_RATING_{$val}")?>
-                                            </option>
-										<? } ?>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="adm-detail-content-cell-l">
-                        <label for="blog_categories">
-							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_CATEGORIES")?>:
-                        </label>
-                    </td>
-                    <td width="60%" class="adm-detail-content-cell-r">
-                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                                <td>
-									<?
-									$selectCategories = Option::get($curModuleName, "blog_categories");
-									if($selectCategories) {
-										$selectCategories = unserialize($selectCategories);
-										if(!is_array($selectCategories)) {
-											$selectCategories = array();
-										}
-									} else {
-										$selectCategories = array();
-									}
-									?>
-                                    <select name="blog_categories[]" multiple="multiple">
-										<? foreach(Dev2funYandexZen::getCategories() as $val) {?>
-                                            <option value="<?=$val?>" <?=(in_array($val,$selectCategories))?'selected':''?>>
-												<?=$val?>
                                             </option>
 										<? } ?>
                                     </select>
