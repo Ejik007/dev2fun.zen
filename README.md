@@ -17,7 +17,7 @@
 
 1. Перейдите в директорию модулей вашего Bitrix-проекта:
    ```bash
-   cd /home/bitrix/www/site/bitrix/modules
+   cd /home/bitrix/www/bitrix/modules
    ```
 
 2. Склонируйте репозиторий:
@@ -33,7 +33,7 @@
 ## Настройка
 
 После установки перейдите в настройки модуля:
-`Рабочий стол -> Settings -> Product settings -> Module settings -> Яндекс.Дзен RSS`.
+`Рабочий стол -> Настройки -> Настройки продукта -> Настройки модулей -> Яндекс.Дзен RSS`.
 
 Здесь вы можете настроить:
 - Название и описание блога.
@@ -41,26 +41,24 @@
 - Список управляющих тегов.
 
 ## Использование компонента
-
-Для вывода RSS-ленты уже создан файл (например, `/yandex.zen/index.php`):
+Выгрузка доступна по ссылке из настроек модуля
+Для вывода RSS-ленты уже создан файл (`/yandex.zen/index.php`)
 
 ```php
-<?php
+<?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Yandex Zen RSS");
-
-$APPLICATION->IncludeComponent(
+$APPLICATION->SetTitle("Yandex.Zen RSS");
+?>
+<?$APPLICATION->IncludeComponent(
 	"dev2fun:yandex.zen",
 	"",
-	array(
-		"IBLOCK_ID" => array("1"), // ID ваших инфоблоков
-		"COUNT" => "50",           // Количество элементов
-		"CACHE_TIME" => "3600",
-		"CHECK_DATES" => "Y",
-	),
-	false
-);
-
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
-?>
+	Array(
+		"COUNT" => "100",
+		"FILTER_NAME" => "",
+		"IBLOCK_ID" => array(), //ID инфоблоков
+		"SORT_FIELD" => "created",
+		"SORT_ORDER" => "desc"
+	)
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
 ```
