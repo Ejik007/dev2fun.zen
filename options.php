@@ -21,28 +21,17 @@ IncludeModuleLangFile(__FILE__);
 //require($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/include/prolog_admin_after.php");
 if($request->isPost() && check_bitrix_sessid()) {
 
-    if($blogName = $request->getPost('blog_name')) {
-        Option::set($curModuleName,'blog_name', $blogName);
-    }
-    if($description = $request->getPost('blog_description')) {
-        Option::set($curModuleName,'blog_description', $description);
-    }
-    if($previewLength = $request->getPost('preview_text_length')) {
-        Option::set($curModuleName,'preview_text_length', $previewLength);
-    }
-    if($ageRating = $request->getPost('age_rating')) {
-        Option::set($curModuleName,'age_rating', $ageRating);
-    }
-    if($cat = $request->getPost('blog_categories')) {
-        $cat = serialize($cat);
-        Option::set($curModuleName,'blog_categories',$cat);
-    }
-    if($allow = $request->getPost('tags_allow')) {
-        Option::set($curModuleName,'tags_allow',$allow);
-    }
-    if($zenCategories = $request->getPost('zen_categories')) {
-        Option::set($curModuleName,'zen_categories',$zenCategories);
-    }
+    Option::set($curModuleName,'blog_name', (string)$request->getPost('blog_name'));
+    Option::set($curModuleName,'blog_description', (string)$request->getPost('blog_description'));
+    Option::set($curModuleName,'preview_text_length', (string)$request->getPost('preview_text_length'));
+    Option::set($curModuleName,'age_rating', (string)$request->getPost('age_rating'));
+    
+    $cat = $request->getPost('blog_categories');
+    if(!is_array($cat)) $cat = [];
+    Option::set($curModuleName,'blog_categories', serialize($cat));
+    
+    Option::set($curModuleName,'tags_allow', (string)$request->getPost('tags_allow'));
+    Option::set($curModuleName,'zen_categories', (string)$request->getPost('zen_categories'));
     
     $showAuthor = $request->getPost('show_author');
     if(!$showAuthor) $showAuthor = 'N';
