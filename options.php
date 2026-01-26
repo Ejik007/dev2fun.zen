@@ -56,6 +56,10 @@ if($request->isPost() && check_bitrix_sessid()) {
 		if($zenCategories = $request->getPost('zen_categories')) {
 			Option::set($curModuleName,'zen_categories',$zenCategories);
 		}
+		$showAuthor = $request->getPost('show_author');
+		if(!$showAuthor) $showAuthor = 'N';
+		Option::set($curModuleName,'show_author',$showAuthor);
+
 		$utmTerm = $request->getPost('utm_term');
 		if(!$utmTerm) $utmTerm = 'N';
         Option::set($curModuleName,'utm_term',$utmTerm);
@@ -281,6 +285,28 @@ $tabControl->Begin();
                                     <input type="text"
                                            name="zen_categories"
                                            value="<?=Option::get($curModuleName, "zen_categories", 'index, comment-all, format-article');?>"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="adm-detail-content-cell-l">
+                        <label for="show_author">
+							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_SHOW_AUTHOR") ?>:
+                        </label>
+                    </td>
+                    <td width="60%" class="adm-detail-content-cell-r">
+                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td>
+									<? $showAuthor = Option::get($curModuleName, "show_author", 'Y'); ?>
+                                    <input type="checkbox"
+                                           name="show_author"
+                                           value="Y"
+										<?=($showAuthor=='Y')?'checked':''?>
                                     />
                                 </td>
                             </tr>

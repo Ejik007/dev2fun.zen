@@ -40,7 +40,7 @@ if(\BX_UTF===true) {
                     <?php if (!empty($arResult["RATING"])) { ?>
                         <media:rating scheme="urn:simple"><?= $APPLICATION->ConvertCharset($arResult['RATING'], $sourceCharset, 'utf8') ?></media:rating>
                     <?php } ?>
-                    <?php if (!empty($arResult['SITE']["SITE_NAME"])) { ?>
+                    <?php if ($arResult['SHOW_AUTHOR'] == 'Y' && !empty($arResult['SITE']["SITE_NAME"])) { ?>
                         <author><?= $APPLICATION->ConvertCharset($arResult['SITE']["SITE_NAME"], $sourceCharset, 'utf8'); ?></author>
                     <?php } ?>
                     <?php if (!empty($arResult["CATEGORY"])) { ?>

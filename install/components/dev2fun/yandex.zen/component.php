@@ -52,6 +52,7 @@ if ($obCache->initCache($arParams["CACHE_TIME"], $cacheId, $cachePath)) {
     $arResult['CATEGORY'] = Dev2funYandexZen::getOption('blog_categories', true);
     $arResult['ZEN_CATEGORIES'] = Dev2funYandexZen::getOption('zen_categories');
     $arResult['RATING'] = Dev2funYandexZen::getOption('age_rating');
+    $arResult['SHOW_AUTHOR'] = Dev2funYandexZen::getOption('show_author');
 
     $arFilter = [
         "IBLOCK_LID" => SITE_ID,
