@@ -70,6 +70,19 @@ $bVarsFromForm = false;
 //require($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/include/prolog_admin_after.php");
 ?>
 
+<style>
+    .adm-detail-content-table input[type="text"],
+    .adm-detail-content-table textarea,
+    .adm-detail-content-table select {
+        width: 100%;
+        max-width: 500px;
+        box-sizing: border-box;
+    }
+    .adm-detail-content-table input[type="checkbox"] {
+        width: auto;
+    }
+</style>
+
 <link rel="stylesheet" href="https://unpkg.com/blaze@4.0.0-6/scss/dist/components.cards.min.css">
 <link rel="stylesheet" href="https://unpkg.com/blaze@4.0.0-6/scss/dist/objects.grid.min.css">
 <link rel="stylesheet" href="https://unpkg.com/blaze@4.0.0-6/scss/dist/objects.grid.responsive.min.css">
@@ -211,7 +224,7 @@ $tabControl->Begin();
 										$selectCategories = array();
 									}
 									?>
-                                    <select name="blog_categories[]" multiple="multiple" style="width:30%">
+                                    <select name="blog_categories[]" multiple="multiple">
 										<? foreach(Dev2funYandexZen::getCategories() as $val) {?>
                                             <option value="<?=$val?>" <?=(in_array($val,$selectCategories))?'selected':''?>>
 												<?=$val?>
