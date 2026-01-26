@@ -57,6 +57,11 @@ class Dev2funYandexZen
         $obCache = \Bitrix\Main\Data\Cache::createInstance();
         $obCache->cleanDir($cachePath);
         $obCache->cleanDir('/dev2fun.zen/');
+        
+        if (class_exists('\CBitrixComponent')) {
+            \BXClearCache(true, "/dev2fun.zen/");
+        }
+
         if (class_exists('\Bitrix\Main\Data\StaticHtmlCache')) {
             $staticHtmlCache = \Bitrix\Main\Data\StaticHtmlCache::getInstance();
             $staticHtmlCache->deleteAll();
