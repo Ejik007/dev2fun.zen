@@ -40,13 +40,13 @@ if(\BX_UTF===true) {
                     <?php if (!empty($arResult["RATING"])) { ?>
                         <media:rating scheme="urn:simple"><?= $APPLICATION->ConvertCharset($arResult['RATING'], $sourceCharset, 'utf8') ?></media:rating>
                     <?php } ?>
-                    <?php if ($arResult['SHOW_AUTHOR'] == 'Y' && !empty($arResult['SITE']["SITE_NAME"])) { ?>
-                        <author><?= $APPLICATION->ConvertCharset($arResult['SITE']["SITE_NAME"], $sourceCharset, 'utf8'); ?></author>
-                    <?php } ?>
                     <?php if (!empty($arResult["CATEGORY"])) { ?>
                         <?php foreach ($arResult["CATEGORY"] as $category): ?>
                             <category><?= $APPLICATION->ConvertCharset($category, $sourceCharset, 'utf8'); ?></category>
                         <?php endforeach; ?>
+                    <?php } ?>
+                    <?php if ($arResult['SHOW_AUTHOR'] == 'Y' && !empty($arResult['SITE']["SITE_NAME"])) { ?>
+                        <author><?= $APPLICATION->ConvertCharset($arResult['SITE']["SITE_NAME"], $sourceCharset, 'utf8'); ?></author>
                     <?php } ?>
                     <?php if (!empty($arItem["MEDIA"])) { ?>
                         <?php foreach ($arItem["MEDIA"] as $media) { ?>
