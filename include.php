@@ -51,22 +51,6 @@ class Dev2funYandexZen
         return $option;
     }
 
-    public static function getUTM($title = null)
-    {
-        $utmSource = self::getOption('utm_source');
-        $utmMedium = self::getOption('utm_medium');
-        if (!$utmSource || !$utmMedium) return '';
-        $utm = [
-            'utm_source' => $utmSource,
-            'utm_medium' => $utmMedium,
-        ];
-        $utmTerm = self::getOption('utm_term');
-        if ($utmTerm == 'Y' && $title) {
-            $utm['utm_term'] = urlencode($title);
-        }
-        return http_build_query($utm, '', '&amp;');
-    }
-
     public static function clearCache()
     {
         $cachePath = 'dev2fun.zen';

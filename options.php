@@ -24,10 +24,29 @@ if($request->isPost() && check_bitrix_sessid()) {
     if($blogName = $request->getPost('blog_name')) {
         Option::set($curModuleName,'blog_name', $blogName);
     }
-    // ...existing code...
-    $utmTerm = $request->getPost('utm_term');
-    if(!$utmTerm) $utmTerm = 'N';
-    Option::set($curModuleName,'utm_term',$utmTerm);
+    if($description = $request->getPost('blog_description')) {
+        Option::set($curModuleName,'blog_description', $description);
+    }
+    if($previewLength = $request->getPost('preview_text_length')) {
+        Option::set($curModuleName,'preview_text_length', $previewLength);
+    }
+    if($ageRating = $request->getPost('age_rating')) {
+        Option::set($curModuleName,'age_rating', $ageRating);
+    }
+    if($cat = $request->getPost('blog_categories')) {
+        $cat = serialize($cat);
+        Option::set($curModuleName,'blog_categories',$cat);
+    }
+    if($allow = $request->getPost('tags_allow')) {
+        Option::set($curModuleName,'tags_allow',$allow);
+    }
+    if($zenCategories = $request->getPost('zen_categories')) {
+        Option::set($curModuleName,'zen_categories',$zenCategories);
+    }
+    
+    $showAuthor = $request->getPost('show_author');
+    if(!$showAuthor) $showAuthor = 'N';
+    Option::set($curModuleName,'show_author',$showAuthor);
 
     Dev2funYandexZen::clearCache();
     LocalRedirect($APPLICATION->GetCurPageParam('save_success=Y',['cache_success']));
@@ -277,70 +296,6 @@ $tabControl->Begin();
                         </table>
                     </td>
                 </tr>
-
-<!-- 
-                <tr>
-                    <td class="adm-detail-content-cell-l">
-                        <label for="utm_source">
-							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_UTM_SOURCE") ?>:
-                        </label>
-                    </td>
-                    <td width="60%" class="adm-detail-content-cell-r">
-                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                                <td>
-                                    <input type="text"
-                                           name="utm_source"
-                                           value="<?=Option::get($curModuleName, "utm_source", 'zen');?>"
-                                    />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="adm-detail-content-cell-l">
-                        <label for="utm_medium">
-							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_UTM_MEDIUM") ?>:
-                        </label>
-                    </td>
-                    <td width="60%" class="adm-detail-content-cell-r">
-                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                                <td>
-                                    <input type="text"
-                                           name="utm_medium"
-                                           value="<?=Option::get($curModuleName, "utm_medium", 'referral');?>"
-                                    />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="adm-detail-content-cell-l">
-                        <label for="utm_term">
-							<?=Loc::getMessage("D2F_MODULE_ZEN_OPTIONS_UTM_TERM") ?>:
-                        </label>
-                    </td>
-                    <td width="60%" class="adm-detail-content-cell-r">
-                        <table class="nopadding" cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                                <td>
-									<? $selectUtmTerm = Option::get($curModuleName, "utm_term", 'Y'); ?>
-                                    <input type="checkbox"
-                                           name="utm_term"
-                                           value="Y"
-										<?=($selectUtmTerm=='Y')?'checked':''?>
-                                    />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr> -->
-
 
             </table>
         </td>

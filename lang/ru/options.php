@@ -17,9 +17,6 @@ $MESS["D2F_MODULE_ZEN_OPTIONS_CATEGORIES"] = "Тематики блога";
 $MESS["D2F_MODULE_ZEN_OPTIONS_TAGS_ALLOW"] = "Разрешенные теги";
 $MESS["D2F_MODULE_ZEN_OPTIONS_ZEN_CATEGORIES"] = "Управляющие теги (через запятую)";
 $MESS["D2F_MODULE_ZEN_OPTIONS_SHOW_AUTHOR"] = "Выводить тег &lt;author&gt;";
-$MESS["D2F_MODULE_ZEN_OPTIONS_UTM_SOURCE"] = "Добавляемый utm_source";
-$MESS["D2F_MODULE_ZEN_OPTIONS_UTM_MEDIUM"] = "Добавляемый utm_medium";
-$MESS["D2F_MODULE_ZEN_OPTIONS_UTM_TERM"] = "Добавлять utm_term";
 
 $MESS["D2F_MODULE_ZEN_OPTIONS_CLEAR_CACHE"] = "Очистить кэш";
 $MESS["D2F_YANDEXZEN_OPTIONS_CLEARED"] = "Кэш успешно очищен";

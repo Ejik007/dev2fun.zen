@@ -65,9 +65,6 @@ Class dev2fun_zen extends CModule
 		Option::set($this->MODULE_ID,'preview_text_length',200);
 		Option::set($this->MODULE_ID,'age_rating','nonadult');
 		Option::set($this->MODULE_ID,'tags_allow','<a><img><iframe><blockquotes><figure><p><h1><h2><h3><h4><h5><h6><br>');
-		Option::set($this->MODULE_ID,'utm_source','zen');
-		Option::set($this->MODULE_ID,'utm_medium','referral');
-		Option::set($this->MODULE_ID,'utm_term','Y');
 	}
 
     public function installComponent() {
