@@ -33,6 +33,7 @@ if(\BX_UTF===true) {
                     <?php } ?>
                     <?php if (!empty($arItem["DETAIL_PAGE_URL"])) { ?>
                         <link><?= $APPLICATION->ConvertCharset($arItem["DETAIL_PAGE_URL"], $sourceCharset, 'utf8') ?></link>
+                        <guid><?= md5(SITE_ID . '-' . $arItem["IBLOCK_ID"] . '-' . $arItem["ID"]) ?></guid>
                     <?php } ?>
                     <?php if (!empty($arItem["DATE_CREATE"])) { ?>
                         <pubDate><?= $APPLICATION->ConvertCharset($arItem["DATE_CREATE"], $sourceCharset, 'utf8') ?></pubDate>
