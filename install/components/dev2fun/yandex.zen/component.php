@@ -11,7 +11,7 @@
 
 /**
  * @author darkfriend <hi@darkfriend.ru>
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 use Bitrix\Main\Context,

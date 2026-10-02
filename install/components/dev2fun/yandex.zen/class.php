@@ -2,7 +2,7 @@
 /**
  * @author darkfriend <hi@darkfriend.ru>
  * @copyright dev2fun
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Dev2funYandexZenComponent extends CBitrixComponent
@@ -132,6 +132,15 @@ class Dev2funYandexZenComponent extends CBitrixComponent
     {
         $str = preg_replace('#(\<script.*\>.*?\</script\>)#s', '', $str);
         $str = preg_replace('#(\<style.*\>.*?\</style\>)#s', '', $str);
+        $str = $this->clearPlaceholders($str);
+        return $str;
+    }
+
+    public function clearPlaceholders($str)
+    {
+        $str = preg_replace('~#([A-Z][A-Z0-9_]*)#~', '', $str);
+        $str = preg_replace('~<p[^>]*>(?:\s|<br\s*/?>)*</p>~i', '', $str);
+        $str = preg_replace("~(\r?\n){3,}~", "\n\n", $str);
         return $str;
     }
 }

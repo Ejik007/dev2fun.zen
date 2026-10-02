@@ -2,7 +2,7 @@
 /**
  * @author dev2fun <darkfriend>
  * @copyright (c) 2017, darkfriend <hi@darkfriend.ru>
- * @version 1.1.0
+ * @version 1.1.1
  */
 if(!check_bitrix_sessid()) return;
 IncludeModuleLangFile(__FILE__);

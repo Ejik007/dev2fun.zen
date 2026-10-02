@@ -3,7 +3,7 @@
  * Install
  * @author dev2fun (darkfriend)
  * @copyright (c) 2026, darkfriend <hi@darkfriend.ru>
- * @version 1.1.0
+ * @version 1.1.1
  */
 IncludeModuleLangFile(__FILE__);
 
@@ -36,8 +36,8 @@ Class dev2fun_zen extends CModule
             $this->MODULE_VERSION = $arModuleVersion["VERSION"];
             $this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
         } else {
-            $this->MODULE_VERSION = '1.1.0';
-            $this->MODULE_VERSION_DATE = '2026-01-26 10:00:00';
+            $this->MODULE_VERSION = '1.1.1';
+            $this->MODULE_VERSION_DATE = '2026-10-02 10:00:00';
         }
         $this->MODULE_NAME = Loc::getMessage("DEV2FUN_MODULE_NAME_YANDEXZEN");
         $this->MODULE_DESCRIPTION = Loc::getMessage("DEV2FUN_MODULE_DESCRIPTION_YANDEXZEN");
